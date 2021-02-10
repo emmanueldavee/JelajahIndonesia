@@ -23,7 +23,7 @@
                     <label for="category">Category</label>
                     <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">
                         @foreach($categories as $category)
-                            <option value="">{{ $category->name }}</option>
+                            <option value="{{ $category->name }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
 

@@ -20,17 +20,17 @@ class ArticleController extends Controller
             'image' => ['required', 'image']
         ]);
 
-        $imagePath = request('image')->store('products', 'public');
+        $imagePath = request('image')->store('articles', 'public');
         $imageArray = ['image' => $imagePath];
 
-        $data['type'] = Category::where('name', $data['category'])->first();
+        $data['category_id'] = Category::where('name', $data['category'])->first()->id;
 
-        auth()->user()->articles()->create(array_merge(
+        $article = auth()->user()->articles()->create(array_merge(
             $data,
             $imageArray ?? []
         ));
 
-        request()->session()->flash('success', $data['name'].' sucessfully uploaded');
+        request()->session()->flash('success', $data['title'].' sucessfully uploaded');
         return redirect('home');
     }
 }

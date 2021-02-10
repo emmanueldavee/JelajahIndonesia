@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\isUser;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,5 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/articles/create', 'ArticleController@create');
-Route::post('/articles', 'ArticleController@store');
+Route::get('/users/edit', 'UserController@edit')->middleware('auth');
+Route::patch('/users/{user}', 'UserController@update')->middleware('auth');
+
+Route::get('/articles/create', 'ArticleController@create')->middleware(isUser::class);
+Route::post('/articles', 'ArticleController@store')->middleware(isUser::class);

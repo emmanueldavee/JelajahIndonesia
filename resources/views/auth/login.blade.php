@@ -49,7 +49,7 @@
 
                     <div class="d-flex justify-content-between">
                         <div class="text-gray text-small">
-                            Don't have an account? <a href="/register">Sign Up</a>
+                            Don't have an account? <a href="{{ url('register') }}">Sign Up</a>
                         </div>
                         <div>
                             <input type="submit" class="btn btn-primary px-5" value="Sign In">

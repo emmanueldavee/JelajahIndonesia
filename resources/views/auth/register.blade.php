@@ -62,7 +62,7 @@
 
                     <div class="d-flex justify-content-between">
                         <div class="text-gray">
-                            Have an account? <a href="/login">Sign In</a>
+                            Have an account? <a href="{{ url('login') }}">Sign In</a>
                         </div>
                         <div>
                             <input type="submit" class="btn btn-primary px-5" value="Sign Up">
