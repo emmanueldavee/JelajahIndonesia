@@ -26,7 +26,7 @@ class CategorySeeder extends Seeder
                 'name' => 'National Parks'
             ],
             [
-                'name' => 'museums'
+                'name' => 'Museums'
             ],
             [
                 'name' => 'Zoos'

@@ -3,6 +3,7 @@
 400;500;600;700;800;900&display=swap);body {
   font-family: "Poppins", sans-serif;
   color: #000000;
+  background: #FFFFFF;
 }
 
 a {
@@ -53,5 +54,11 @@ a:hover {
 
 .shadow-dark {
   box-shadow: 0 0 5px rgba(48, 46, 47, 0.1);
+}
+
+img.card-img-top {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 

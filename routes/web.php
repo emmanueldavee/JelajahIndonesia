@@ -13,13 +13,13 @@ use App\Http\Middleware\isUser;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ArticleController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function(){
+    return redirect('/');
+});
 
 Route::get('/users/edit', 'UserController@edit')->middleware('auth');
 Route::patch('/users/{user}', 'UserController@update')->middleware('auth');

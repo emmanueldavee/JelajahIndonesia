@@ -4,6 +4,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     color: $black;
+    background: $white;
 }
 
 a {
@@ -51,5 +52,10 @@ a {
 .shadow-dark {
     -webkit-box-shadow: 0 0 5px rgba(48, 46, 47, 0.10);
     box-shadow: 0 0 5px rgba(48, 46, 47, 0.10);
+}
+
+img.card-img-top {
+    height: 200px;
+    object-fit: cover;
 }
 

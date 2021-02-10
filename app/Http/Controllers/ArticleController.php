@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    public function index(){
+        $articles = Article::orderBy('created_at', 'DESC')->get();
+        return view('articles.index', compact('articles'));
+    }
+
     public function create(){
         $categories = Category::all('name');
         return view('articles.create', compact('categories'));
@@ -31,6 +37,14 @@ class ArticleController extends Controller
         ));
 
         request()->session()->flash('success', $data['title'].' sucessfully uploaded');
+        return redirect('home');
+    }
+
+    public function destroy(Article $article){
+        $title = $article->title;
+        $article->delete();
+
+        request()->session()->flash('success', $title.' sucessfully deleted');
         return redirect('home');
     }
 }

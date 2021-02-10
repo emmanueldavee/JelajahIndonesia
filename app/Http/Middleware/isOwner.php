@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class isUser
+class isOwner
 {
     /**
      * Handle an incoming request.
@@ -21,13 +21,13 @@ class isUser
             return redirect('/login');
         }
 
-        if($request->user()->isAdmin()){
-            // user is not the admin
-            request()->session()->flash('error', 'Admins are unauthorized!');
-            return redirect()->back();
+        if($request->post->user->id == auth()->user()->id){
+            // if user is the owner of the article
+            return $next($request);
         }
 
-        // user is admin
-        return $next($request);
+        // user is not the owner of the article
+        request()->session()->flash('error', 'You are unauthorized!');
+        return redirect('/login');
     }
 }
