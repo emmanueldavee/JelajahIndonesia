@@ -32,29 +32,33 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    @if(auth()->user())
-                        <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a href="{{ url('/') }}" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categories
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach($categories as $category)
+                                    <a href="/categories/{{ $category->id }}" class="dropdown-item">{{ $category->name }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                        @if(auth()->user())
                             @if(auth()->user()->isAdmin())
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/user') }}" class="nav-link">User</a>
+                                    <a href="{{ url('admin/user') }}" class="nav-link">Users</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/admin') }}" class="nav-link">Admins</a>
                                 </li>
                             @else
-                                <li class="nav-item">
-                                    <a href="{{ url('home') }}" class="nav-link">Home</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Categories
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        @foreach($categories as $category)
-                                            <a href="/categories/{{ $category->id }}" class="dropdown-item">{{ $category->name }}</a>
-                                        @endforeach
-                                    </div>
-                                </li>
+                                
                             @endif
-                        </ul>
-                    @endif
+                        @endif
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

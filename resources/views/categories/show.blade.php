@@ -16,11 +16,11 @@
                         </div>
                         @if(auth()->user() && ($article->user->id == auth()->user()->id || auth()->user()->isAdmin()))
                         <div class="card-footer">
-                                <form action="/articles/{{ $article->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-outline-danger">Delete</button>
-                                </form>
+                            <form action="/articles/{{ $article->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-outline-danger">Delete</button>
+                            </form>
                         </div>
                         @endif
                     </div>

@@ -21,7 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'UserController@home');
 
-Route::get('/admin/user', 'UserController@admin')->middleware(isAdmin::class);
+Route::get('/admin/user', 'UserController@adminUser')->middleware(isAdmin::class);
+Route::get('/admin/admin', 'UserController@adminAdmin')->middleware(isAdmin::class);
 
 Route::get('/users/edit', 'UserController@edit')->middleware('auth');
 Route::get('/users/{user}/blogs', 'UserController@blogs')->middleware('auth');

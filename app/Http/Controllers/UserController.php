@@ -43,10 +43,18 @@ class UserController extends Controller
         return redirect('/home');
     }
 
-    public function admin(){
+    public function adminUser(){
+        $type = 'user';
         $categories = Category::all();
         $users = User::where('role', 'user')->get();
-        return view('users.admin', compact('categories', 'users'));
+        return view('users.admin', compact('categories', 'users', 'type'));
+    }
+
+    public function adminAdmin(){
+        $type = 'admin';
+        $categories = Category::all();
+        $users = User::where('role', 'admin')->get();
+        return view('users.admin', compact('categories', 'users', 'type'));
     }
 
     public function destroy(User $user){

@@ -10,7 +10,7 @@
     <div class="carousel-inner">
         @foreach($top as $key => $article)
             <div class="carousel-item @if($key == 0) {{ 'active' }} @endif">
-                <a href="">
+                <a href="{{ url('/articles/'.$article->id) }}">
                     <img class="d-block w-100 carousel-img img-fluid" src="/storage/{{ $article->image }}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h1 class="text-jumbo text-bold">{{ $article->title }}</h5>
@@ -35,7 +35,7 @@
             @foreach($articles as $article)
                 <div class="col-3 p-0 px-3 py-4">
                     <div class="card shadow-dark">
-                        <a href="">
+                        <a href="{{ url('/articles/'.$article->id) }}">
                             <img src="/storage/{{ $article->image }}" alt="{{ $article->title }}" class="card-img-top">
                         </a>
                         <div class="card-body">
