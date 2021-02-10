@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="justify-content-center">
-        <div class="bg-white p-0 row rounded">
-            <div class="col-7 bg-dark">
-
+    <div class="justify-content-center pt-5 mt-5">
+        <div class="bg-white row rounded shadow-dark">
+            <div class="col-7 p-0">
+                <img src="/storage/articles/borobudur.jpg" alt="Indonesia" class="w-100">
             </div>
             <div class="col-5 py-5 px-5 w-100">
                 <div class="heading text-bold text-center">Sign In</div>
