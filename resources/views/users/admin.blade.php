@@ -8,7 +8,7 @@
         <div class="heading text-bold text-center mb-3">Admins</div>
     @endif
     <div class="row justify-content-center">
-        <div class="col-md-8 shadow-dark rounded">
+        <div class="col-md-9 shadow-dark rounded p-4">
             <table class="table">
                 <thead>
                     <tr>
@@ -31,7 +31,7 @@
                                 <form action="/users/{{ $user->id }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                    <button class="btn btn-outline-danger">Delete</button>
                                 </form>
                             </td>
                             @endif
