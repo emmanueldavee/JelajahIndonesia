@@ -16,11 +16,13 @@ class UserController extends Controller
     }
 
     public function edit(){
+        $categories = Category::all();
+
         // Get the record of the signed in user
         $user = auth()->user();
 
         // Redirect to the view
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'categories'));
     }
 
     public function update(User $user){

@@ -79,7 +79,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(auth()->user()->role == 'user')
                                     <a href="{{url('users/'.auth()->user()->id.'/blogs')}}" class="dropdown-item">My Blogs</a>
+                                    @endif
                                     <a href="{{url('users/edit')}}" class="dropdown-item">Edit Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
