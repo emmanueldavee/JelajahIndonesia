@@ -22,6 +22,10 @@ a {
     font-weight: 700;
 }
 
+.text-jumbo {
+    font-size: 2em;
+}
+
 .text-small {
     font-size: 11px;
 }
@@ -36,7 +40,6 @@ a {
 
 .heading {
     font-size: 35px;
-    margin-bottom: 1.3*30px;
 }
 
 .btn-primary {
@@ -59,3 +62,35 @@ img.card-img-top {
     object-fit: cover;
 }
 
+.carousel {
+    height: 700px;
+    overflow: hidden;
+}
+
+img.carousel-img {
+    height: 700px !important;
+    object-fit: cover;
+}
+
+.footer {
+    font-size: 0.9em !important;
+    color: #929397;
+    background: #171a1f;
+}
+
+.footer-title {
+    font-size: 1.3em;
+    color: inherit;
+}
+
+img.max-5 {
+    max-height: 600px;
+    object-fit: cover;
+}
+
+a.text-dark {
+    color: black;
+    &:hover {
+        color: $brown !important;
+    }
+}

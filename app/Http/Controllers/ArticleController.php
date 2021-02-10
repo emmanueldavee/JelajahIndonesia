@@ -9,8 +9,10 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     public function index(){
+        $categories = Category::all();
         $articles = Article::orderBy('created_at', 'DESC')->get();
-        return view('articles.index', compact('articles'));
+        $top = Article::all()->take(3);
+        return view('articles.index', compact('articles', 'top', 'categories'));
     }
 
     public function create(){
@@ -45,6 +47,11 @@ class ArticleController extends Controller
         $article->delete();
 
         request()->session()->flash('success', $title.' sucessfully deleted');
-        return redirect('home');
+        return redirect()->back();
+    }
+
+    public function show(Article $article){
+        $categories = Category::all();
+        return view('articles.show', compact('categories', 'article'));
     }
 }

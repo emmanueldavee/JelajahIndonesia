@@ -32,9 +32,29 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        
-                    </ul>
+                    @if(auth()->user())
+                        <ul class="navbar-nav mr-auto">
+                            @if(auth()->user()->isAdmin())
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/user') }}" class="nav-link">User</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a href="{{ url('home') }}" class="nav-link">Home</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Categories
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @foreach($categories as $category)
+                                            <a href="/categories/{{ $category->id }}" class="dropdown-item">{{ $category->name }}</a>
+                                        @endforeach
+                                    </div>
+                                </li>
+                            @endif
+                        </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -55,6 +75,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="{{url('users/'.auth()->user()->id.'/blogs')}}" class="dropdown-item">My Blogs</a>
+                                    <a href="{{url('users/edit')}}" class="dropdown-item">Edit Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -72,16 +94,16 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="p-0">
             <div class="container">
                 @if(session()->has('success'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success my-4">
                         {{ session()->get('success') }}
                     </div>
                 @endif
                 
                 @if(session()->has('error'))
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger my-4">
                         {{ session()->get('error') }}
                     </div>
                 @endif
@@ -89,6 +111,44 @@
 
             @yield('content')
         </main>
+
+        <div class="w-100 footer mt-5">
+            <div class="container py-4 sub">
+                <div class="row sub-heading">
+                    <div class="col-7 pb-4">
+                        <div class="row">
+                            <div class="col-3">
+                                <strong class="d-block mb-2 footer-title">Service</strong>
+                                <div class="mb-1">Help</div>
+                                <div class="mb-1">Customer Service</div>
+                            </div>
+                            <div class="col-3">
+                                <strong class="d-block mb-2 footer-title">Source</strong>
+                                <div class="mb-1">Pricing</div>
+                            </div>
+                            <div class="col-3">
+                                <strong class="d-block mb-2 footer-title">Company</strong>
+                                <div class="mb-1">About Us</div>
+                                <div class="mb-1">Contact Us</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-3 d-flex justify-content-between">
+                    <div>
+                        <span>&copy; JelajahIndonesia</span>
+                        <span class="ml-4">Terms and Conditions</span>                        
+                    </div>
+                    <div>
+                        <i class="fab fa-instagram mr-1 d-inline-block"></i>
+                        <i class="fab fa-youtube mr-1 d-inline-block"></i>
+                        <i class="fab fa-facebook-f mr-3 d-inline-block"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 </html>

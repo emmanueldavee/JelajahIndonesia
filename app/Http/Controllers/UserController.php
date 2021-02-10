@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use App\Category;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function home(){
+        $categories = Category::all();
+        $articles = Article::all()->take(3);
+        return view('users.home', compact('articles', 'categories'));
+    }
+
     public function edit(){
         // Get the record of the signed in user
         $user = auth()->user();
@@ -33,5 +41,26 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/home');
+    }
+
+    public function admin(){
+        $categories = Category::all();
+        $users = User::where('role', 'user')->get();
+        return view('users.admin', compact('categories', 'users'));
+    }
+
+    public function destroy(User $user){
+        $name = $user->name;
+        $user->delete();
+
+        request()->session()->flash('success', $name.' sucessfully deleted');
+        return redirect('/admin/home');
+    }
+
+    public function blogs(User $user){
+        $articles = $user->articles;
+        $categories = Category::all();
+
+        return view('users.articles', compact('articles', 'categories', 'user'));
     }
 }

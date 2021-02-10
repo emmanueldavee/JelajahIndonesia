@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container pt-4">
     <div class="row justify-content-center">
         <div class="col-md-8 shadow-dark bg-white rounded px-5 py-5">
             <div class="heading text-bold text-center">New Blog</div>
