@@ -98,3 +98,8 @@ a.text-dark {
         color: $brown !important;
     }
 }
+
+img.cover {
+    height: 100%;
+    object-fit: cover;
+}

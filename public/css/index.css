@@ -105,3 +105,9 @@ a.text-dark:hover {
   color: #AE9277 !important;
 }
 
+img.cover {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
