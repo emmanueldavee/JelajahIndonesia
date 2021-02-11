@@ -29,6 +29,7 @@ class UserController extends Controller
         // Validation
         $data = request()->validate([
             'name' => ['required', 'string', 'max:255'],
+            // Checks uniqueness of the email except for itself
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
             // Adds additional validation for the phone field
             'phone' => ['required', 'digits_between:8,12']
@@ -64,7 +65,7 @@ class UserController extends Controller
         $user->delete();
 
         request()->session()->flash('success', $name.' sucessfully deleted');
-        return redirect('/admin/home');
+        return redirect()->back();
     }
 
     public function blogs(User $user){

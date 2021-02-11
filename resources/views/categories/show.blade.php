@@ -3,6 +3,7 @@
 @section('content')
 <div class="container pt-4">
     <div class="justify-content-center">
+        <div class="heading text-bold text-center mb-3">{{$articles[0]->category->name}}</div>
         <div class="row">
             @forelse($articles as $article)
                 <div class="col-3 p-0 px-3 py-4">

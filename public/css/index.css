@@ -111,3 +111,8 @@ img.cover {
      object-fit: cover;
 }
 
+p.p-wrap {
+  width: 100%;
+  word-break: break-word;
+}
+

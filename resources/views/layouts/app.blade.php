@@ -41,6 +41,7 @@
                                 Categories
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <!-- Iterate to all categories -->
                                 @foreach($categories as $category)
                                     <a href="/categories/{{ $category->id }}" class="dropdown-item">{{ $category->name }}</a>
                                 @endforeach
